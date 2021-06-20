@@ -1,18 +1,4 @@
 ;;;;
-;; Dumb hack to make Windows context menus work
-;; should be safe to comment out on *nix systems
-;;;;
-(require 'server)
-(unless (server-running-p)
-  (cond
-   ((eq system-type 'windows-nt)
-    (setq server-auth-dir "~\\.emacs.d\\server\\"))
-   ((eq system-type 'gnu/linux)
-    (setq server-auth-dir "~/.emacs.d/server/")))
-  (setq server-name "emacs-server-file")
-  (server-start))
-
-;;;;
 ;; Packages
 ;;;;
 
@@ -20,6 +6,8 @@
 (require 'package)
 (add-to-list 'package-archives
              '("tromey" . "http://tromey.com/elpa/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
@@ -40,21 +28,17 @@
 
 ;; Define he following variables to remove the compile-log warnings
 ;; when defining ido-ubiquitous
-;; (defvar ido-cur-item nil)
-;; (defvar ido-default-item nil)
-;; (defvar ido-cur-list nil)
-;; (defvar predicate nil)
-;; (defvar inherit-input-method nil)
+(defvar ido-cur-item nil)
+(defvar ido-default-item nil)
+(defvar ido-cur-list nil)
+(defvar predicate nil)
+(defvar inherit-input-method nil)
 
 ;; The packages you want installed. You can also install these
 ;; manually with M-x package-install
 ;; Add in your own as you wish:
 (defvar my-packages
-  '(;; makes handling lisp expressions much, much easier
-    ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
-    paredit
-
-    ;; key bindings and code colorization for Clojure
+  '(;; key bindings and code colorization for Clojure
     ;; https://github.com/clojure-emacs/clojure-mode
     clojure-mode
 
@@ -75,7 +59,8 @@
     ;; http://www.emacswiki.org/emacs/Smex
     smex
 
-    ;; project navigation
+    ;; Lets you run make or lein or any other project dependant commands.
+    ;; https://github.com/bbatsov/projectile
     projectile
 
     ;; colorful parenthesis matching
@@ -87,17 +72,8 @@
     ;; git integration
     magit))
 
-;; On OS X, an Emacs instance started from the graphical user
-;; interface will have a different environment than a shell in a
-;; terminal window, because OS X does not run a shell during the
-;; login. Obviously this will lead to unexpected results when
-;; calling external utilities like make from Emacs.
-;; This library works around this problem by copying important
-;; environment variables from the user's shell.
-;; https://github.com/purcell/exec-path-from-shell
-(if (eq system-type 'darwin)
-    (add-to-list 'my-packages 'exec-path-from-shell))
 
+;; Install those packages ayyy
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
@@ -154,11 +130,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(cider-auto-select-error-buffer nil)
- '(cider-show-error-buffer nil)
  '(coffee-tab-width 2)
  '(package-selected-packages
-   '(cider-hydra magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell)))
+   (quote
+    (magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode exec-path-from-shell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

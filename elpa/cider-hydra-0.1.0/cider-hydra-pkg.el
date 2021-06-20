@@ -1,2 +1,0 @@
-;;; Generated package description from c:/Users/paige/AppData/Roaming/.emacs.d/elpa/cider-hydra-0.1.0/cider-hydra.el  -*- no-byte-compile: t -*-
-(define-package "cider-hydra" "0.1.0" "Hydras for CIDER." '((cider "0.18.0") (hydra "0.13.0")) :commit "5956c3909cd9beae11f64973e4f0d830cea7860d" :authors '(("Tianxiang Xiong" . "tianxiang.xiong@gmail.com")) :maintainer '("Tianxiang Xiong" . "tianxiang.xiong@gmail.com") :keywords '("convenience" "tools") :url "https://github.com/clojure-emacs/cider-hydra")
