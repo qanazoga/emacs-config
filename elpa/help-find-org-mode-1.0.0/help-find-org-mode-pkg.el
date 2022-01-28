@@ -1,0 +1,2 @@
+;;; Generated package description from c:/Users/paige/AppData/Roaming/.emacs.d/elpa/help-find-org-mode-1.0.0/help-find-org-mode.el  -*- no-byte-compile: t -*-
+(define-package "help-find-org-mode" "1.0.0" "Advise help to find org source over tangled code" '((emacs "24.4")) :commit "c6fa2c8a8e9381572190010a9fa01f2be78f2790" :authors '(("Eric Crosson" . "eric.s.crosson@utexas.com")) :maintainer '("Eric Crosson" . "eric.s.crosson@utexas.com") :keywords '("convenience") :url "https://github.com/EricCrosson/help-find-org-mode")

@@ -131,8 +131,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
+ '(org-export-with-sub-superscripts '{})
+ '(org-support-shift-select 'always)
+ '(org-use-sub-superscripts '{})
  '(package-selected-packages
-   '(markdown-mode magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode exec-path-from-shell)))
+   '(company htmlize help-find-org-mode markdown-mode magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode exec-path-from-shell)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
